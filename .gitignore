@@ -1,2 +1,2 @@
-backend/src/config/env.js
+backend/.env
 backend/node_modules
