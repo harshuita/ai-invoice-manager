@@ -10,6 +10,7 @@ const {connectDB}=require("./config/db")
 const {notFound,errorHandler}= require("./middleware/errorHandler")
 
 const healthRouter=require("./routes/health")
+const authRouter=require("./routes/auth")
 const app=express()
 
 
@@ -23,6 +24,9 @@ app.use(
 app.use(express.json({ limit: "12mb" }));
 app.use(express.urlencoded({ extended: true, limit: "12mb" }));
 app.use(cookieParser());
+
+app.use("/api/health",healthRouter)
+app.use("/api/auth",authRouter);
 if (!env.isProd) app.use(morgan("dev"));
 
 app.use("/api/health", healthRouter);
