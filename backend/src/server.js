@@ -13,6 +13,8 @@ const healthRouter=require("./routes/health")
 const authRouter=require("./routes/auth")
 const clientRouter=require("./routes/client")
 const invoiceRouter=require("./routes/invoice")
+const dashboardRouter=require("./routes/dashboard")
+const reportsRouter=require("./routes/reports")
 const app=express()
 
 
@@ -31,6 +33,8 @@ app.use("/api/health",healthRouter)
 app.use("/api/auth",authRouter);
 app.use("/api/clients",clientRouter);
 app.use("/api/invoices",invoiceRouter);
+app.use("/api/reports",reportsRouter);
+app.use("/api/dashboard",dashboardRouter);
 if (!env.isProd) app.use(morgan("dev"));
 
 app.use("/api/health", healthRouter);
