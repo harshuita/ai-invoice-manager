@@ -15,6 +15,8 @@ const clientRouter=require("./routes/client")
 const invoiceRouter=require("./routes/invoice")
 const dashboardRouter=require("./routes/dashboard")
 const reportsRouter=require("./routes/reports")
+const settingsRouter=require("./routes/settings")
+const itemsRouter=require("./routes/items")
 const app=express()
 
 
@@ -29,12 +31,14 @@ app.use(express.json({ limit: "12mb" }));
 app.use(express.urlencoded({ extended: true, limit: "12mb" }));
 app.use(cookieParser());
 
-app.use("/api/health",healthRouter)
-app.use("/api/auth",authRouter);
-app.use("/api/clients",clientRouter);
-app.use("/api/invoices",invoiceRouter);
-app.use("/api/reports",reportsRouter);
-app.use("/api/dashboard",dashboardRouter);
+app.use("/api/health", healthRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/clients", clientRouter);
+app.use("/api/invoices", invoiceRouter);
+app.use("/api/reports", reportsRouter);
+app.use("/api/dashboard", dashboardRouter);
+app.use("/api/settings", settingsRouter);
+app.use("/api/items", itemsRouter);
 if (!env.isProd) app.use(morgan("dev"));
 
 app.use("/api/health", healthRouter);
